@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>《我是市长》</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <!-- 加载动画 -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="cyber-city">
+            <div class="cyber-building building1">
+                <div class="grid"></div>
+                <div class="scan-effect"></div>
+            </div>
+            <div class="cyber-building building2">
+                <div class="grid"></div>
+                <div class="scan-effect"></div>
+            </div>
+            <div class="cyber-building building3">
+                <div class="grid"></div>
+                <div class="scan-effect"></div>
+            </div>
+            <div class="cyber-building building4">
+                <div class="grid"></div>
+                <div class="scan-effect"></div>
+            </div>
+        </div>
+        <div class="loading-text">
+            <span class="cyber-text">系统启动中</span>
+            <div class="loading-dots">
+                <span>.</span><span>.</span><span>.</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-nav">
+        <button class="nav-btn" onclick="switchModule('module2')">用户登录</button>
+        <button class="nav-btn" onclick="switchModule('module3')">更多玩法</button>
+        </div>
+    </div>
+
+    <!-- 模块1 -->
+    <div id="module1" class="module">
+        <div class="container">
+            <div class="left-section">
+                <div class="introduction">
+                    <h1>欢迎来到我是市长游戏</h1>
+                    <p>《我是市长》游戏是一个模拟经营游戏，玩家可以通过扮演市长，管理城市的发展。点击开始按钮，玩家会来到S0421星球，在这里开启市长之旅 。</p>
+                </div>
+                <a href="https://www.coze.cn/s/iU8Mghnx/" target="_blank">
+                    <button class="start-button">开始游戏</button>
+                </a>
+            </div>
+            <div class="right-section">
+                <div class="model-navigation">
+                    <button class="nav-button prev" onclick="previousModel()"><</button>
+                    <div id="model-container"></div>
+                    <button class="nav-button next" onclick="nextModel()">></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模块2 - 登录界面 -->
+    <div id="module2" class="module" style="display: none;">
+        <div class="login-container">
+            <h2>用户登录</h2>
+            <!-- 登录方式切换按钮 -->
+            <div class="login-type-switch">
+                <button class="switch-btn active" onclick="switchLoginType('password')">密码登录</button>
+                <button class="switch-btn" onclick="switchLoginType('qr')">扫码登录</button>
+            </div>
+            
+            <!-- 密码登录表单 -->
+            <form id="password-login" class="login-form">
+                <input type="text" placeholder="用户名" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+            </form>
+            
+            <!-- 扫码登录区域 -->
+            <div id="qr-login" class="login-form" style="display: none;">
+                <div class="qr-container">
+                    <img src="./logo.png" alt="扫码登录" class="qr-code">
+                    <p>请使用VR眼镜扫码登录</p>
+                </div>
+            </div>
+            
+            <button class="back-btn" onclick="switchModule('module1')">返回</button>
+        </div>
+    </div>
+
+    <!-- 登录成功提示 -->
+<div id="login-success" class="login-success" style="display: none;">
+    <div class="success-content">
+        <h3>登录成功</h3>
+        <p>正在返回主页面...</p>
+    </div>
+</div>
+
+    <!-- 模块3 - 购物界面 -->
+<div id="module3" class="module" style="display: none;">
+    <!-- 第一部分：3D模型展示 -->
+    <div class="section-one">
+        <h2 class="section-title">🌟商品展示🌟</h2>
+        <div class="model-showcase">
+            <div id="special-model-container"></div>
+            <p class="model-description">游戏专用VR眼镜</p>
+            <div class="price-tag">价格：1999 游戏币</div>
+            <button class="buy-button" onclick="buyNow()">立即购买</button>
+        </div>
+    </div>
+    
+    <!-- 第二部分：商品列表 -->
+    <div class="section-two">
+        <h2 class="section-title">🌟更多商品🌟</h2>
+        <div class="card-container">
+            <div class="feature-card product-card">
+                <img src="星球吉祥物.jpeg" alt="商品1">
+                <h3>玩偶系列</h3>
+                <p>《我是市长》游戏吉祥物</p>
+                <div class="product-price">99 游戏币</div>
+                <button class="buy-button" onclick="buyNow()">立即购买</button>
+            </div>
+            <div class="feature-card product-card">
+                <img src="乐高拼成的高科技星球.png" alt="商品2">
+                <h3>乐高系列</h3>
+                <p>《我是市长》游戏乐高星球</p>
+                <div class="product-price">699 游戏币</div>
+                <button class="buy-button" onclick="buyNow()">立即购买</button>
+            </div>
+            <div class="feature-card product-card">
+                <img src="本子.jpeg" alt="商品3">
+                <h3>文具系列</h3>
+                <p>《我是市长》星球本子</p>
+                <div class="product-price">69 游戏币</div>
+                <button class="buy-button" onclick="buyNow()">立即购买</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 添加期待文字 -->
+    <div class="coming-soon">
+        <p>~尽情期待，更多玩法~</p>
+    </div>
+       <!-- 在这里添加返回首页按钮 -->
+    <div class="back-home">
+        <button class="back-btn" onclick="switchModule('module1')">返回首页</button>
+    </div>
+</div>
+
+ <!-- 支付二维码弹窗 -->
+ <div class="payment-modal" id="paymentModal">
+    <div class="payment-content">
+        <h3>扫码支付</h3>
+        <img src="支付.jpg" alt="支付二维码" class="payment-qr">
+        <p>请使用手机扫描二维码完成支付</p>
+        <button class="close-btn" onclick="closePaymentModal()">关闭</button>
+    </div>
+</div>
+
+ <!-- 脚本引入 -->
+ <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>
+ <script src="script.js"></script>
+ <script>
+    particlesJS.load('particles-js', 'particles.json', function() {
+        console.log('particles.js loaded');
+    });
+</script>
+</body>
+</html>
