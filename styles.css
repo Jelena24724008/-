@@ -1,0 +1,760 @@
+/* 粒子背景样式 - 放在最开头 */
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: -1;
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #000000, #0a1128);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.cyber-city {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+}
+
+.cyber-building {
+    position: relative;
+    width: 80px;
+    background: rgba(0, 255, 255, 0.1);
+    border: 2px solid #00fff2;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2),
+                inset 0 0 20px rgba(0, 255, 255, 0.1);
+    transform-style: preserve-3d;
+    animation: float 3s ease-in-out infinite;
+}
+
+.building1 { height: 160px; animation-delay: 0s; }
+.building2 { height: 200px; animation-delay: 0.2s; }
+.building3 { height: 240px; animation-delay: 0.4s; }
+.building4 { height: 180px; animation-delay: 0.6s; }
+
+.grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        linear-gradient(90deg, rgba(0,255,242,0.1) 1px, transparent 1px) 0 0 / 20px 20px,
+        linear-gradient(0deg, rgba(0,255,242,0.1) 1px, transparent 1px) 0 0 / 20px 20px;
+}
+
+.scan-effect {
+    position: absolute;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to bottom,
+        rgba(0, 255, 242, 0),
+        #00fff2,
+        rgba(0, 255, 242, 0));
+    animation: scan 2s linear infinite;
+}
+
+.loading-text {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cyber-text {
+    color: #00fff2;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px rgba(0, 255, 242, 0.5);
+    animation: glow 2s ease-in-out infinite;
+}
+
+.loading-dots span {
+    color: #00fff2;
+    font-size: 28px;
+    animation: dots 1.5s infinite;
+    opacity: 0;
+}
+
+.loading-dots span:nth-child(2) { animation-delay: 0.5s; }
+.loading-dots span:nth-child(3) { animation-delay: 1s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotateY(0deg); }
+    50% { transform: translateY(-20px) rotateY(10deg); }
+}
+
+@keyframes scan {
+    0% { top: -5px; opacity: 0; }
+    50% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes glow {
+    0%, 100% { text-shadow: 0 0 10px rgba(0, 255, 242, 0.5); }
+    50% { text-shadow: 0 0 20px rgba(0, 255, 242, 0.8); }
+}
+
+@keyframes dots {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
+    margin-top: 30px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
+    margin-top: 30px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.city-loading {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.building {
+    width: 40px;
+    background-color: #4CAF50;
+    margin: 0 5px;
+    border-radius: 4px 4px 0 0;
+    animation: grow 1.5s ease-in-out infinite;
+}
+
+.building1 { height: 60px; animation-delay: 0s; }
+.building2 { height: 80px; animation-delay: 0.2s; }
+.building3 { height: 100px; animation-delay: 0.4s; }
+.building4 { height: 70px; animation-delay: 0.6s; }
+
+@keyframes grow {
+    0%, 100% { transform: scaleY(1); }
+    50% { transform: scaleY(1.2); }
+}
+
+.loading-text {
+    color: white;
+    font-size: 24px;
+    margin-top: 20px;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-image: url('./背景.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    color: white;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left-section {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.right-section {
+    flex: 1;
+    position: relative;
+}
+
+.introduction {
+    text-align: center;
+    margin-bottom: 30px;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.introduction h1 {
+    color: white;
+    font-size: 2.5em;
+    margin-top: -50px;
+    margin-bottom: 30px;
+}
+
+.introduction p {
+    color: white;
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+.start-button {
+    padding: 15px 30px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.start-button:active {
+    transform: scale(0.98);
+}
+
+/* 让链接不显示下划线 */
+a {
+    text-decoration: none;
+}
+#model-container {
+    width: 100%;
+    height: 100%;
+}
+
+.model-navigation {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.nav-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid #ddd;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.nav-button.prev {
+    left: 20px;
+}
+
+.nav-button.next {
+    right: 20px;
+}
+
+.nav-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.top-nav {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.nav-btn {
+    padding: 10px 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+.module {
+    width: 100%;
+    height: 100vh;
+}
+
+.login-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.login-form input {
+    padding: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 16px;
+}
+
+.login-form input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.login-form button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.back-btn {
+    margin-top: 15px;
+    padding: 8px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* 登录方式切换按钮样式 */
+.login-type-switch {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.switch-btn {
+    padding: 8px 15px;
+    background: transparent;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.switch-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: white;
+}
+
+.switch-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* 二维码容器样式 */
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.qr-code {
+    width: 180px;
+    height: 180px;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.qr-container p {
+    color: white;
+    margin: 0;
+}
+
+/* 模块3样式 */
+#module3 {
+    height: auto;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    background-color: #000000; /* 添加黑色背景 */
+}
+
+.price-tag {
+    color: #FFD700;
+    font-size: 1.5em;
+    margin: 15px 0;
+    font-weight: bold;
+}
+
+.buy-button {
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.buy-button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-price {
+    color: #FFD700;
+    font-size: 1.2em;
+    margin: 10px 0;
+    font-weight: bold;
+}
+
+.buy-btn {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.buy-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.section-one, .section-two {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+}
+
+.section-title {
+    color: white;
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);  /* 添加半透明黑色遮罩 */
+}
+
+.model-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#special-model-container {
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.model-description {
+    color: white;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+.feature-card p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* 购物车图标样式 */
+.cart-icon {
+    position: relative;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* 购物车面板样式 */
+.cart-panel {
+    position: fixed;
+    top: 80px;
+    right: -300px;
+    width: 300px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    transition: right 0.3s ease;
+    z-index: 1000;
+}
+
+.cart-panel.active {
+    right: 20px;
+}
+
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+    margin: 15px 0;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-total {
+    margin: 15px 0;
+    font-size: 1.2em;
+    text-align: right;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.checkout-btn:hover {
+    background-color: #45a049;
+}
+
+/* 购物车图标样式 */
+.cart-icon {
+    position: relative;
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: #ff4444;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+}
+
+/* 支付二维码弹窗样式 */
+.payment-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+}
+
+.payment-content {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.payment-content p {
+    color: #000000;  /* 将文字颜色改为黑色 */
+    margin: 15px 0;
+}
+
+.payment-qr {
+    width: 200px;
+    height: 200px;
+    margin: 20px 0;
+}
+
+.close-btn {
+    padding: 8px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.close-btn:hover {
+    background-color: #45a049;
+}
+
+/* 返回首页按钮样式 */
+.back-home {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 30px 0;
+    margin-top: 20px;
+}
+
+.back-btn {
+    padding: 15px 30px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: scale(1.05);
+}
+
+/* 期待文字样式 */
+.coming-soon {
+    width: 100%;
+    text-align: center;
+    padding: 40px 0;
+    color: white;
+    font-size: 24px;
+    font-style: italic;
+}
